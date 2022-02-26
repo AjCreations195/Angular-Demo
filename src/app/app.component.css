@@ -1,0 +1,14 @@
+ul li{
+    padding: 5px;
+}
+ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+
+
+}
+.active{
+        background-color: rgb(134, 121, 121);
+}

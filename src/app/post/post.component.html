@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>My Posts</h1>
+    <div class="row" *ngFor="let post of posts; let i=index">
+       <h2>{{i+1}}. {{post.title}}</h2>
+       <p style="color: blueviolet;">{{post.body}}</p>
+    <hr>
+    </div>
+</div>

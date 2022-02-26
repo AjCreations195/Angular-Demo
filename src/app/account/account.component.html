@@ -1,0 +1,19 @@
+<div class="row p-4 bg-secondary">
+    <div class="col-xs-12 col-md-8-col-md-offset-2">
+        <h5>{{singleAccount.name}}</h5>
+        <hr>
+        <p>This account is {{singleAccount.status}}</p>
+        <div class="d-flex justify-content-between">
+        <button class="btn btn-primary"  (click)="setTo('active')">
+            Set to active
+        </button>
+        <button class="btn btn-primary"  (click)="setTo('inactive')">
+            Set to inactive
+        </button>
+        <button class="btn btn-primary"  (click)="setTo('hidden')">
+            Set to unknown
+        </button></div>
+    </div>
+</div>
+<br>
+<br>

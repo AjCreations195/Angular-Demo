@@ -1,0 +1,46 @@
+<button class="btn btn-success" (click)="onStart()">Start Game</button>
+<button class="btn btn-danger" (click)="onPause()">Pause Game</button>
+<div class="container mt-4">
+    <div class="row">
+        <div *ngFor="let number of numbers">
+            <ul>
+                <li [ngClass]="{odd: number%2!==0 }"
+                [ngStyle]="{backgroundColor:number%2==0 ? 'yellow' :'green'}" >{{number}}</li>
+            </ul> 
+         </div>
+        <div class="col-xs-12">
+            
+            <button class="btn btn-primary" (click)="onlyOddnumbers=!onlyOddnumbers" >Only Show Odd</button>
+            <br>
+            
+            <ul  class="list-group">
+                
+                <div *ngIf="onlyOddnumbers">
+                    <li class="list-group-item"
+                     [ngClass]="{odd: odd%2 !=0 }"
+                     [ngStyle]="{backgroundColor: 'green'}"
+                    *ngFor="let number of oddNum">{{number}} </li>
+                </div>
+
+                <div *appUnless="onlyOddnumbers">
+                    <li class="list-group-item"
+                    [ngClass]="{odd: number%2 !==0 }"
+                      *ngFor="let number of evenNum">{{number}} </li>
+                     </div> 
+                <!-- <div *ngIf="!onlyOddnumbers">
+               <li class="list-group-item"
+               [ngClass]="{odd: number%2 !==0 }"
+                 *ngFor="let number of evenNum">{{number}} </li>
+                </div>  -->
+                <!-- <ng-template [ngIf]="!onlyOddnumbers" ><div>
+                    <li class="list-group-item"
+                    [ngClass]="{odd: number%2 !==0 }"
+                      *ngFor="let number of evenNum">{{number}} </li>
+                    
+                </div></ng-template> -->
+             </ul>
+        </div>
+        
+    </div>
+</div>
+
