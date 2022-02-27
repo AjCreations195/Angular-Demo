@@ -32,6 +32,7 @@ import { FirebaseFormComponent } from "./firebase-form/firebase-form.component";
 import { AnimationComponent } from "./animation/animation.component";
 import { PostComponent } from "./post/post.component";
 import { TestDemoComponent } from "./test-demo/test-demo.component";
+import { AlertComponent } from "./alert/alert.component";
 
 const appRoutes: Routes = [
 
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
   },
 
   { path: 'appActive', component: ActiveUsersComponent },
-   { path: 'pipe', component: PipesComponent },  
+   { path: 'pipe', component: PipesComponent },
   { path: 'appInactive', component: InactiveUsersComponent },
   { path: 'serverAndBlueprint', component: ServerAndBlueprintComponent },
   {path:'form', component:FormDemoComponent},
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
   {path:'animation',component:AnimationComponent},
   {path:'post',component:PostComponent},
   {path:'test', component:TestDemoComponent},
+{path:'elements', component:AlertComponent},
   // {path:'not-found', component:PageNotFoundComponent},
   { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
   { path: '**', redirectTo: '/not-found' },
@@ -72,7 +74,7 @@ const appRoutes: Routes = [
   imports: [
     // RouterModule.forRoot(appRoutes,{useHash:true})
     RouterModule.forRoot(appRoutes)
-    
+
   ],
   exports: [RouterModule]
 })

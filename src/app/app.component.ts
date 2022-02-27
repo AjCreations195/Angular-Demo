@@ -1,8 +1,11 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Injector, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccountsService } from './services/account.service';
 import { LoggingService } from './services/logging.service';
 import { SingleUserServcie } from './single-user/single-user.service';
+import{ createCustomElement} from '@angular/elements';
+import { AlertComponent } from './alert/alert.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
   EvenNumbers:number[]=[]
   value=100;
   userActivated=false;
-  title="app-works!"
+  title="app-works!";
+content=null;
 
 
   onIntervalFired(firedNumber:number){
@@ -25,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
    }
    else{
      this.OddNumbers.push(firedNumber)
-     
+
    }
 
   }
@@ -33,8 +37,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private accountsService:AccountsService,
-    private singleUserService:SingleUserServcie
-  ){}
+    private singleUserService:SingleUserServcie,
+injector:Injector,
+domSanitizer:DomSanitizer
+
+
+  ){
+    const AlertElement=createCustomElement(AlertComponent,{injector:injector});
+customElements.define('my-alert',AlertElement);
+setTimeout(()=>{
+// this.content='<p>this is an alert</p>'
+  this.content=domSanitizer.bypassSecurityTrustHtml("<my-alert message='this is rendered dynamically'></my-alert>");
+
+},1000);
+
+  }
   ngOnInit(): void {
       this.accounts= this.accountsService.accounts;
      this.activatedSub = this.singleUserService.clickActivate.subscribe(
@@ -48,5 +65,5 @@ export class AppComponent implements OnInit, OnDestroy {
       this.activatedSub.unsubscribe()
   }
 
-   
+
 }

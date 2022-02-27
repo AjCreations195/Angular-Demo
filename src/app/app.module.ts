@@ -48,6 +48,7 @@ import { PostComponent } from './post/post.component';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TestDemoComponent } from './test-demo/test-demo.component'
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { TestDemoComponent } from './test-demo/test-demo.component'
     FirebaseFormComponent,
     AnimationComponent,
     PostComponent,
-    TestDemoComponent
+    TestDemoComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +115,7 @@ import { TestDemoComponent } from './test-demo/test-demo.component'
     useClass:AuthInterceptorService,
     multi:true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+// entryComponents:[AlertComponent]
 })
 export class AppModule { }

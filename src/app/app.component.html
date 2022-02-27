@@ -1,85 +1,108 @@
 <section>
-    <div class="row p-4 navbar-nav navbar ">
-      <div class="col-xs-12 ">
-        <ul class="nav nav-tabs">
-           <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><a routerLink="/" >Home</a></li> 
-           <li role="presentation" routerLinkActive="active"><a routerLink="/servers">Servers</a></li> 
-           <li role="presentation" routerLinkActive="active" ><a [routerLink]="['/users']">Users</a></li>
-           <li routerLinkActive="active"><a [routerLink]="['/appActive']">Active</a></li>
-           <li routerLinkActive="active"><a [routerLink]="['/appInactive']">Inactive</a></li>
-          <li  routerLinkActive="active"><a routerLink="/serverAndBlueprint"> serverAndBlueprint</a></li>
-          <li  routerLinkActive="active"><a routerLink="/main"> Main</a></li>
-          <li  routerLinkActive="active"><a [routerLink]="['singleUser',1]"> User 1</a></li>
-          <li  routerLinkActive="active"><a [routerLink]="['singleUser',2]">User 2</a></li>
-          <li  routerLinkActive="active"><a routerLink="/form">Form</a></li>
-          <li  routerLinkActive="active"><a routerLink="/reactive-form">ReactiveForm</a></li>
-         <li  routerLinkActive="active"><a routerLink="/pipe">Pipes</a></li>
-         <li  routerLinkActive="active"><a routerLink="/firebase-form">Firebase Form</a></li>
-         <li  routerLinkActive="active"><a routerLink="/animation">Animate</a></li>
-         <li  routerLinkActive="active"><a routerLink="/post">Posts</a></li>
-         <li  routerLinkActive="active"><a routerLink="/test">Test Demo</a></li>
-         
-             
+  <div class="row p-4 navbar-nav navbar">
+    <div class="col-xs-12">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/appActive']">Active</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/appInactive']">Inactive</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/serverAndBlueprint"> serverAndBlueprint</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/main"> Main</a></li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['singleUser', 1]"> User 1</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['singleUser', 2]">User 2</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/form">Form</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/reactive-form">ReactiveForm</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/pipe">Pipes</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/firebase-form">Firebase Form</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/animation">Animate</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/post">Posts</a></li>
+        <li routerLinkActive="active"><a routerLink="/test">Test Demo</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/elements">HtmlElements</a>
+        </li>
       </ul>
-      </div>
     </div>
-    
+  </div>
+<div>
+<p>This is not router outlet</p>
+<!-- <app-alert message="This is a normal angular component..."></app-alert> -->
+<div [innerHtml]="content" ></div>
+</div>
 
-  <div class="container p-4 ">
+  <div class="container p-4">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<p>This is html</p>
         <router-outlet></router-outlet>
-          <hr>
-          {{title}}
+        <hr />
+        {{ title }}
         <p *ngIf="userActivated">Activated!</p>
-        <br>
+        <br />
       </div>
     </div>
-  
   </div>
-  
 </section>
 <section class="p-4">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2">
-<h2> Introduction to Services</h2>
-      <app-new-account></app-new-account>
-<hr>
-      <app-account 
-        *ngFor="let account of accounts,let i=index"
-       [singleAccount]="account"
-       [id]="i"></app-account>
+        <h2>Introduction to Services</h2>
+        <app-new-account></app-new-account>
+        <hr />
+        <app-account *ngFor="let account of accounts; let i = index" [singleAccount]="account" [id]="i"></app-account>
       </div>
     </div>
-  </div >
-
+  </div>
 </section>
 <section id="odd and even number">
   <div class="container">
-  <h1>odd and even number</h1>
-  <div class="row">
-    <div class="col-xs-12">
-      <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+    <h1>odd and even number</h1>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <app-odd *ngFor="let oddnumber of OddNumbers" [number]="oddnumber"></app-odd>
+        <app-even *ngFor="let evennumber of EvenNumbers" [number]="evennumber"></app-even>
+      </div>
+      <p appBasicHighlight>Style me with basicHighlightDiective</p>
+      <p [appBetterHighlight]="'black'" highlight="green">
+        Style me with betterHighlightDiective
+      </p>
+
+      <h2>ngSwitch structural directive</h2>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="10">value is 10bbbbb</p>
+        <p *ngSwitchCase="100">value is 1000</p>
+        <p *ngSwitchDefault>value is default</p>
+      </div>
     </div>
   </div>
-
- <div class="row">
-   <div class="col-xs-12">
-    <app-odd *ngFor="let oddnumber of OddNumbers" 
-    [number]="oddnumber"></app-odd>
-    <app-even *ngFor="let evennumber of EvenNumbers "
-     [number]="evennumber"></app-even>
-  </div>
-  <p appBasicHighlight >Style me with basicHighlightDiective</p>
-  <p [appBetterHighlight]="'black'"  highlight="green">Style me with betterHighlightDiective</p>
-  
-  <h2>ngSwitch structural directive</h2>
-  <div [ngSwitch]="value">
-    <p *ngSwitchCase="5">value is 5</p>
-    <p  *ngSwitchCase="10">value is 10bbbbb</p>
-    <p  *ngSwitchCase="100">value is 1000</p>
-    <p  *ngSwitchDefault >value is default</p>
-  </div>
-</div></div>
 </section>
